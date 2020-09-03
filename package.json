@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "fuser -k 3000/tcp & nodemon src/index.js",
-    "start": "fuser -k 3000/tcp & node src/index.js"
+    "dev": "fuser -k 3000/tcp & cross-env NODE_ENV=development nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js"
   },
   "repository": {
     "type": "git",
