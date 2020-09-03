@@ -14,9 +14,23 @@ app.set('port', process.env.PORT || 4000);
 
 // Set views, with path
 app.set('views', path.join(__dirname, 'views'));
+console.log(path.join(__dirname, 'views'));
 
-app.set('view engine', 'html');
-app.engine('html', require('ejs').__express);
+// Express-handlebars configuration for use mode views
+app.engine(
+  '.hbs',
+  exphbs({
+    defaultLayout: 'main.hbs',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.hbs',
+  })
+);
+
+console.log(app.get('views'));
+
+// Template engine configuration
+app.set('view engine', '.hbs');
 
 // Middlewares
 // Use module Morgan to see request Http

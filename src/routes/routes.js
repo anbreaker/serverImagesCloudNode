@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const path = require('path');
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -7,7 +8,8 @@ router.get('/', (req, res) => {
 
 router.get('/images/add', (req, res) => {
   // res.send('Hola');
-  res.render('image_form');
+  // res.sendFile(path.join(__dirname, '../views/layouts/main.html'));
+  res.render('../views/partials/image_form');
 });
 
 module.exports = router;
