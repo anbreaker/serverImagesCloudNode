@@ -1,5 +1,5 @@
-const express = require('express');
 const exphbs = require('express-handlebars');
+const express = require('express');
 const morgan = require('morgan');
 const multer = require('multer');
 const path = require('path');
@@ -15,22 +15,8 @@ app.set('port', process.env.PORT || 4000);
 // Set views, with path
 app.set('views', path.join(__dirname, 'views'));
 
-// Express-handlebars configuration for use mode views
-app.engine(
-  '.hbs',
-  exphbs({
-    defaultLayout: 'main.hbs',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs',
-  })
-);
-
-// Template engine configuration
-app.set('view engine', '.hbs');
-
-// Template engine configuration
-app.set('view engine', '.hbs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').__express);
 
 // Middlewares
 // Use module Morgan to see request Http
