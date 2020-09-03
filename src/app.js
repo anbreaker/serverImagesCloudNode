@@ -14,7 +14,6 @@ app.set('port', process.env.PORT || 4000);
 
 // Set views, with path
 app.set('views', path.join(__dirname, 'views'));
-console.log(path.join(__dirname, 'views'));
 
 // Express-handlebars configuration for use mode views
 app.engine(
@@ -26,8 +25,6 @@ app.engine(
     extname: '.hbs',
   })
 );
-
-console.log(app.get('views'));
 
 // Template engine configuration
 app.set('view engine', '.hbs');
