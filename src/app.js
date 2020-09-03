@@ -1,7 +1,7 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 const multer = require('multer');
-const expHbs = require('express-handlebars');
 const path = require('path');
 const uuid = require('uuid');
 
@@ -12,22 +12,32 @@ require('./database');
 // Settings
 app.set('port', process.env.PORT || 4000);
 
+// Set views, with path
 app.set('views', path.join(__dirname, 'views'));
+
+// Express-handlebars configuration for use mode views
 app.engine(
   '.hbs',
-  expHbs({
-    defaultLayout: 'main',
+  exphbs({
+    defaultLayout: 'main.hbs',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs',
   })
 );
 
-// view engine setup
+// Template engine configuration
+app.set('view engine', '.hbs');
+
+// Template engine configuration
 app.set('view engine', '.hbs');
 
 // Middlewares
+// Use module Morgan to see request Http
 app.use(morgan('dev'));
+
+// Form sends data, understand it, but not accept images etc...(Method of Express)
+app.use(express.urlencoded({extended: false}));
 
 // Config Express Data
 app.use(express.json());

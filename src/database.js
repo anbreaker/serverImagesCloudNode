@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const dbLink = process.env.MONGODB_URI;
+// const dbLink = process.env.MONGODB_URI;
+const dbLink = 'mongodb://localhost:27017/test';
 
 mongoose
   .connect(dbLink, {
