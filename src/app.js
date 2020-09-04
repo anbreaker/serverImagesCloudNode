@@ -26,7 +26,7 @@ app.engine(
   })
 );
 
-console.log('------------->', __dirname + '/views/layouts/');
+// console.log('------------->', __dirname + '/views/layouts/');
 
 // Template engine configuration
 app.set('view engine', '.hbs');
